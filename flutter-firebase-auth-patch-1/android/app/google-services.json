@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "336552091022",
+    "project_id": "finaly-auth-gym-app",
+    "storage_bucket": "finaly-auth-gym-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336552091022:android:d468161f768dc8e287d8df",
+        "android_client_info": {
+          "package_name": "com.example.firebase_auth_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336552091022-e7o36dua05a5u767e3bn70tfob79ahjq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_f7VJjRvB08PFP0eJw5bsDwQXBOtkDp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336552091022-e7o36dua05a5u767e3bn70tfob79ahjq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,22 @@
+[
+    {
+      "title": "Упражнения",
+      "imgUrl": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Z3ltfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+    },
+    {
+        "title": "Спортвное питание",
+        "imgUrl": "https://cdn.shopify.com/s/files/1/0570/5728/0191/collections/optimum_nutrition_1600x.jpg?v=1652264682"
+      },
+      {
+        "title": "Состав и таблица \nкалорийности продуктов",
+        "imgUrl": "https://c.ndtvimg.com/2021-05/ntaqi8j8_diet_625x300_09_May_21.jpg"
+      },
+      {
+        "title": "Фармокология",
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTOTvzQVEWNUA5jxPr5zKxefhMtJAVo_49pcmVZWZ55eGjdDo4g5iob7utUOJBuoTG-zY&usqp=CAU"
+      },
+      {
+        "title": "Энциклопедия",
+        "imgUrl": "http://top-bio.ru/wp-content/uploads/2021/12/%D0%B7%D0%BE%D0%B6.jpg"
+      }
+  ]
