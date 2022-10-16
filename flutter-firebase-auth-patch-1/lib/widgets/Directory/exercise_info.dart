@@ -1,6 +1,6 @@
-import 'package:firebase_auth_demo/Directory/info_model.dart';
+import 'package:firebase_auth_demo/widgets/Directory/info_model.dart';
 import 'package:flutter/material.dart';
-import '../constants/colors.dart';
+import '../../utils/constants/colors.dart';
 
 class InfoInfo extends StatelessWidget {
   final DescriptionInfo info;

@@ -2,23 +2,21 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_demo/screens/login_email_password_screen.dart';
 import 'package:firebase_auth_demo/screens/login_screen.dart';
 import 'package:firebase_auth_demo/screens/signup_email_password_screen.dart';
-import 'package:firebase_auth_demo/services/firebase_auth_methods.dart';
+import 'package:firebase_auth_demo/auth/services/firebase_auth_methods.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'auth/firebase_options.dart';
 import 'navigation/navigator_widget.dart';
 
 void main() async {
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-    ),
-  );
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

@@ -6,9 +6,9 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-import '../constants/colors.dart';
+import '../utils/constants/colors.dart';
 import '../navigation/navigator_widget.dart';
-import '../texts/app_medium_text.dart';
+import '../utils/texts/app_medium_text.dart';
 
 class TestMusic extends StatefulWidget {
   @override

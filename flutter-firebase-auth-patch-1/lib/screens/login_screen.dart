@@ -1,7 +1,6 @@
-import 'package:firebase_auth_demo/constants/colors.dart';
+import 'package:firebase_auth_demo/utils/constants/colors.dart';
 import 'package:firebase_auth_demo/screens/signup_email_password_screen.dart';
-import 'package:firebase_auth_demo/services/firebase_auth_methods.dart';
-import 'package:firebase_auth_demo/widgets/custom_button.dart';
+import 'package:firebase_auth_demo/auth/services/firebase_auth_methods.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

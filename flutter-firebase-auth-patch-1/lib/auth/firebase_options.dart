@@ -24,8 +24,6 @@ class DefaultFirebaseOptions {
         return android;
       case TargetPlatform.iOS:
         return ios;
-      case TargetPlatform.macOS:
-        return macos;
       default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
@@ -50,17 +48,6 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC9wBMEJ1WDl8WkUoxHqIVqPLvwClaTYxs',
-    appId: '1:599030350718:ios:d4aadf3cf97a599eb6292f',
-    messagingSenderId: '599030350718',
-    projectId: 'fir-auth-demo-ec48c',
-    storageBucket: 'fir-auth-demo-ec48c.appspot.com',
-    iosClientId:
-        '599030350718-rt5diuiggpna5fmco6k05teqm2km0f66.apps.googleusercontent.com',
-    iosBundleId: 'com.example.firebaseAuthDemo',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyC9wBMEJ1WDl8WkUoxHqIVqPLvwClaTYxs',
     appId: '1:599030350718:ios:d4aadf3cf97a599eb6292f',
     messagingSenderId: '599030350718',

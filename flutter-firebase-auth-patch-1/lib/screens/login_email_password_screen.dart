@@ -1,4 +1,4 @@
-import 'package:firebase_auth_demo/services/firebase_auth_methods.dart';
+import 'package:firebase_auth_demo/auth/services/firebase_auth_methods.dart';
 import 'package:firebase_auth_demo/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

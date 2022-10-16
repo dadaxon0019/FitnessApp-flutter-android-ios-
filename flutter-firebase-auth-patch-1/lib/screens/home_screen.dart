@@ -1,22 +1,20 @@
 import 'package:firebase_auth_demo/screens/card_widget_model.dart';
-import 'package:firebase_auth_demo/services/firebase_auth_methods.dart';
+import 'package:firebase_auth_demo/auth/services/firebase_auth_methods.dart';
 import 'package:firebase_auth_demo/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../constants/colors.dart';
-import '../texts/app_medium_text.dart';
-import '../texts/app_small_text.dart';
-import '../workout_categories.dart';
+import '../utils/constants/colors.dart';
+import '../utils/texts/app_medium_text.dart';
+import '../utils/texts/app_small_text.dart';
+import '../widgets/workout_categories.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final user = context.read<FirebaseAuthMethods>().user;
-
     return Scaffold(
       backgroundColor: Color(0xff1C1C1E),
       body: Padding(

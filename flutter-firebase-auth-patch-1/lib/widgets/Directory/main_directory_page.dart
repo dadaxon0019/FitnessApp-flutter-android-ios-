@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../constants/colors.dart';
-import '../texts/app_large_text.dart';
+import '../../utils/constants/colors.dart';
+import '../../utils/texts/app_large_text.dart';
 import 'exercise.dart';
 
 class DirectoryPage extends StatefulWidget {

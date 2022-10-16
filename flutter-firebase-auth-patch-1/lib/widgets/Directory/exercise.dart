@@ -1,11 +1,11 @@
 import 'dart:convert';
-import 'package:firebase_auth_demo/Directory/exercise_info.dart';
-import 'package:firebase_auth_demo/Directory/info_model.dart';
+import 'package:firebase_auth_demo/widgets/Directory/exercise_info.dart';
+import 'package:firebase_auth_demo/widgets/Directory/info_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../constants/colors.dart';
-import '../texts/app_large_text.dart';
+import '../../utils/constants/colors.dart';
+import '../../utils/texts/app_large_text.dart';
 
 class Exercise extends StatefulWidget {
   @override

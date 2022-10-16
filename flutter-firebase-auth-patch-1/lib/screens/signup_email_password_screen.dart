@@ -1,10 +1,10 @@
-import 'package:firebase_auth_demo/services/firebase_auth_methods.dart';
+import 'package:firebase_auth_demo/auth/services/firebase_auth_methods.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-
-import '../constants/colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../utils/constants/colors.dart';
 
 class EmailPasswordSignup extends StatefulWidget {
   static String routeName = '/signup-email-password';
@@ -17,13 +17,42 @@ class EmailPasswordSignup extends StatefulWidget {
 class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController ageController = TextEditingController();
+
+  @override
+  void dispose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    ageController.dispose();
+    super.dispose();
+  }
 
   void signUpUser() async {
     context.read<FirebaseAuthMethods>().signUpWithEmail(
-          email: emailController.text,
-          password: passwordController.text,
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
           context: context,
         );
+
+    //add user details
+
+    addUserDetails(
+        firstNameController.text.trim(),
+        lastNameController.text.trim(),
+        emailController.text.trim(),
+        int.parse(ageController.text.trim()));
+  }
+
+  Future addUserDetails(
+      String firstName, String lastName, String email, int age) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'first name': firstName,
+      'last name': lastName,
+      'email': email,
+      'age': age,
+    });
   }
 
   @override
@@ -51,12 +80,103 @@ class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
                       fit: BoxFit.cover),
                 ),
               ),
+              //first name text field
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
                 width: w,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: mainColor,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: TextField(
+                        style: TextStyle(color: Colors.white),
+                        controller: firstNameController,
+                        decoration: InputDecoration(
+                            counterStyle: TextStyle(color: Colors.white),
+                            hintText: 'First Name',
+                            hintStyle: TextStyle(color: Colors.grey[400]),
+                            prefixIcon: Icon(
+                              Icons.password_outlined,
+                              color: primaryColor,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    BorderSide(color: whiteColor, width: 1.0)),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide(
+                                    color: primaryColor, width: 1.0)),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20))),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: mainColor,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: TextField(
+                        style: TextStyle(color: Colors.white),
+                        controller: lastNameController,
+                        decoration: InputDecoration(
+                            counterStyle: TextStyle(color: Colors.white),
+                            hintText: 'Last Name',
+                            hintStyle: TextStyle(color: Colors.grey[400]),
+                            prefixIcon: Icon(
+                              Icons.password_outlined,
+                              color: primaryColor,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    BorderSide(color: whiteColor, width: 1.0)),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide(
+                                    color: primaryColor, width: 1.0)),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20))),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: mainColor,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: TextField(
+                        style: TextStyle(color: Colors.white),
+                        controller: ageController,
+                        decoration: InputDecoration(
+                            counterStyle: TextStyle(color: Colors.white),
+                            hintText: 'Age',
+                            hintStyle: TextStyle(color: Colors.grey[400]),
+                            prefixIcon: Icon(
+                              Icons.password_outlined,
+                              color: primaryColor,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    BorderSide(color: whiteColor, width: 1.0)),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide(
+                                    color: primaryColor, width: 1.0)),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20))),
+                      ),
+                    ),
                     SizedBox(
                       height: 20,
                     ),

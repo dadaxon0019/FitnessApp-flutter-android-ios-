@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../texts/app_medium_text.dart';
-import '../texts/app_small_text.dart';
+import '../utils/texts/app_medium_text.dart';
+import '../utils/texts/app_small_text.dart';
 
 class Card {
   final Image img;

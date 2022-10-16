@@ -1,8 +1,8 @@
-import 'package:firebase_auth_demo/constants/colors.dart';
+import 'package:firebase_auth_demo/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../services/firebase_auth_methods.dart';
+import '../auth/services/firebase_auth_methods.dart';
 import '../widgets/custom_button.dart';
 
 class Settings extends StatelessWidget {

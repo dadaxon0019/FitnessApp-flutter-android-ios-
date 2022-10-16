@@ -1,9 +1,9 @@
-import 'package:firebase_auth_demo/video_info/video_info.dart';
+import 'package:firebase_auth_demo/widgets/video_info/video_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'texts/app_medium_text.dart';
-import 'texts/app_small_text.dart';
+import '../utils/texts/app_medium_text.dart';
+import '../utils/texts/app_small_text.dart';
 
 class WorkoutCategories extends StatefulWidget {
   @override
