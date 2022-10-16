@@ -80,6 +80,9 @@ class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
                       fit: BoxFit.cover),
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
               //first name text field
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
@@ -100,7 +103,7 @@ class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
                             hintText: 'First Name',
                             hintStyle: TextStyle(color: Colors.grey[400]),
                             prefixIcon: Icon(
-                              Icons.password_outlined,
+                              Icons.person_outlined,
                               color: primaryColor,
                             ),
                             focusedBorder: OutlineInputBorder(
@@ -131,7 +134,7 @@ class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
                             hintText: 'Last Name',
                             hintStyle: TextStyle(color: Colors.grey[400]),
                             prefixIcon: Icon(
-                              Icons.password_outlined,
+                              Icons.person_outlined,
                               color: primaryColor,
                             ),
                             focusedBorder: OutlineInputBorder(
@@ -162,7 +165,7 @@ class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
                             hintText: 'Age',
                             hintStyle: TextStyle(color: Colors.grey[400]),
                             prefixIcon: Icon(
-                              Icons.password_outlined,
+                              Icons.calendar_month_outlined,
                               color: primaryColor,
                             ),
                             focusedBorder: OutlineInputBorder(

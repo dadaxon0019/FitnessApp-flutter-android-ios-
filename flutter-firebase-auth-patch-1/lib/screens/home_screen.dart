@@ -1,20 +1,42 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_demo/screens/card_widget_model.dart';
-import 'package:firebase_auth_demo/auth/services/firebase_auth_methods.dart';
-import 'package:firebase_auth_demo/widgets/custom_button.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../utils/constants/colors.dart';
 import '../utils/texts/app_medium_text.dart';
 import '../utils/texts/app_small_text.dart';
 import '../widgets/workout_categories.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List<String> docIDs = [];
+
+  Future getDocId() async {
+    await FirebaseFirestore.instance.collection('users').get().then(
+          (snapshot) => snapshot.docs.forEach(
+            (document) {
+              docIDs.add(document.reference.id);
+            },
+          ),
+        );
+  }
+
+  @override
+  void initState() {
+    // getDocId();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final id = FirebaseAuth.instance.currentUser!;
     return Scaffold(
       backgroundColor: Color(0xff1C1C1E),
       body: Padding(
@@ -51,14 +73,9 @@ class HomeScreen extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          'Dadaxon',
-                          style: GoogleFonts.openSans(
-                            textStyle: TextStyle(
-                                fontSize: 28,
-                                color: whiteColor,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
+                          id.email!,
+                          style: TextStyle(fontSize: 22, color: Colors.white),
+                        )
                       ],
                     ),
                     Expanded(child: Container()),

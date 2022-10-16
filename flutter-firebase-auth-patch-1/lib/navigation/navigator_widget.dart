@@ -22,7 +22,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
     ),
     Icon(Icons.music_note_outlined),
     Icon(Icons.book),
-    Icon(Icons.settings),
+    Icon(Icons.person),
   ];
   Widget build(BuildContext context) {
     return Scaffold(
