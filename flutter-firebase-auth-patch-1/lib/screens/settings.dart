@@ -1,13 +1,61 @@
-import 'dart:ui';
+import 'dart:io';
 
 import 'package:firebase_auth_demo/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import '../auth/services/firebase_auth_methods.dart';
-import '../widgets/custom_button.dart';
+import '../utils/select_photo.dart';
 
-class Settings extends StatelessWidget {
+class Settings extends StatefulWidget {
+  @override
+  State<Settings> createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
+  File? _image;
+  Future _pickImage(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: source);
+      if (image == null) return;
+      File? img = File(image.path);
+      setState(() {
+        _image = img;
+        Navigator.of(context).pop();
+      });
+    } on PlatformException catch (e) {
+      print(e);
+      Navigator.of(context).pop();
+    }
+  }
+
+  void _showSelectPhotoOptions(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25.0),
+        ),
+      ),
+      builder: (context) => DraggableScrollableSheet(
+          initialChildSize: 0.28,
+          maxChildSize: 0.4,
+          minChildSize: 0.28,
+          expand: false,
+          builder: (context, scrollController) {
+            return SingleChildScrollView(
+              controller: scrollController,
+              child: SelectPhotoOptionsScreen(
+                onTap: _pickImage,
+              ),
+            );
+          }),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -28,14 +76,34 @@ class Settings extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Container(
-                        width: 90,
-                        height: 90,
-                        decoration: BoxDecoration(
+                      GestureDetector(
+                        behavior: HitTestBehavior.translucent,
+                        onTap: () {
+                          _showSelectPhotoOptions(context);
+                        },
+                        child: Container(
+                          width: 90,
+                          height: 90,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade200,
                             borderRadius: BorderRadius.circular(50),
-                            image: DecorationImage(
-                                image: AssetImage('assets/avatar.jpg'),
-                                fit: BoxFit.cover)),
+                          ),
+                          child: Center(
+                            child: _image == null
+                                ? Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(50),
+                                        image: DecorationImage(
+                                            image:
+                                                AssetImage('assets/avatar.jpg'),
+                                            fit: BoxFit.cover)),
+                                  )
+                                : CircleAvatar(
+                                    backgroundImage: FileImage(_image!),
+                                    radius: 200.0,
+                                  ),
+                          ),
+                        ),
                       ),
                       SizedBox(
                         width: 15,
