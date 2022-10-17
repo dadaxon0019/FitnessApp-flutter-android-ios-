@@ -79,14 +79,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     Expanded(child: Container()),
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        image: DecorationImage(
-                            image: AssetImage('assets/avatar.jpg'),
-                            fit: BoxFit.cover),
+                    GestureDetector(
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          image: DecorationImage(
+                              image: AssetImage('assets/avatar.jpg'),
+                              fit: BoxFit.cover),
+                        ),
                       ),
                     )
                   ],

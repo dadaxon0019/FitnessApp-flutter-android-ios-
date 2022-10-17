@@ -306,13 +306,18 @@ class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
                 children: List<Widget>.generate(
                   3,
                   (index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: CircleAvatar(
-                        backgroundColor: primaryColor,
+                    return GestureDetector(
+                      onTap: () {
+                        context.read<FirebaseAuthMethods>().signInWithGoogle();
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
                         child: CircleAvatar(
-                          radius: 28,
-                          backgroundImage: AssetImage('img/' + images[index]),
+                          backgroundColor: primaryColor,
+                          child: CircleAvatar(
+                            radius: 28,
+                            backgroundImage: AssetImage('img/' + images[index]),
+                          ),
                         ),
                       ),
                     );
