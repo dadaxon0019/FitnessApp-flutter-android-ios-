@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthMethods {
   final FirebaseAuth _auth;
+  GoogleSignIn _googleSignIn = GoogleSignIn();
   FirebaseAuthMethods(this._auth);
 
   // FOR EVERY FUNCTION HERE
@@ -78,7 +79,7 @@ class FirebaseAuthMethods {
     }
   }
 
-  Future<UserCredential> signInWithGoogle() async {
+  Future<UserCredential?> signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -100,6 +101,7 @@ class FirebaseAuthMethods {
   Future<void> signOut(BuildContext context) async {
     try {
       await _auth.signOut();
+      await _googleSignIn.disconnect();
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message!); // Displaying the error message
     }

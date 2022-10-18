@@ -1,12 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_demo/screens/login_email_password_screen.dart';
 import 'package:firebase_auth_demo/screens/login_screen.dart';
+import 'package:firebase_auth_demo/screens/music_from_storage.dart';
 import 'package:firebase_auth_demo/screens/signup_email_password_screen.dart';
 import 'package:firebase_auth_demo/auth/services/firebase_auth_methods.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'auth/firebase_options.dart';
 import 'navigation/navigator_widget.dart';
 
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           textTheme: GoogleFonts.openSansTextTheme(),
         ),
-        home: const AuthWrapper(),
+        home: AuthWrapper(),
         routes: {
           EmailPasswordSignup.routeName: (context) =>
               const EmailPasswordSignup(),

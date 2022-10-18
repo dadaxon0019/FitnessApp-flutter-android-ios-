@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 import 'dart:ui';
+import 'package:firebase_auth_demo/screens/music_from_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +100,12 @@ class _TestMusic extends State<TestMusic> {
                             ),
                             Expanded(child: Container()),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (context) => StorageMusic()));
+                              },
                               icon: Icon(
                                 Icons.search,
                                 size: 28,
