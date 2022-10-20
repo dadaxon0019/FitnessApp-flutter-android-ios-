@@ -2,9 +2,9 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth_demo/screens/settings.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/music_from_storage.dart';
 import '../widgets/Directory/main_directory_page.dart';
 import '../screens/home_screen.dart';
-import '../screens/test_music.dart';
 import '../widgets/video_info/video_info.dart';
 
 class NavigatorWidget extends StatefulWidget {
@@ -50,7 +50,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
       ),
       body: IndexedStack(index: index, children: [
         HomeScreen(),
-        TestMusic(),
+        StorageMusic(),
         DirectoryPage(),
         Settings(),
       ]),
