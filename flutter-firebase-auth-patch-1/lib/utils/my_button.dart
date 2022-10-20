@@ -1,3 +1,4 @@
+import 'package:firebase_auth_demo/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
@@ -11,10 +12,15 @@ class MyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.green,
+      ),
       onPressed: onPressed,
-      color: Theme.of(context).primaryColor,
-      child: Text(text),
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 16),
+      ),
     );
   }
 }

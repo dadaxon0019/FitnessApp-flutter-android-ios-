@@ -1,3 +1,4 @@
+import 'package:firebase_auth_demo/utils/constants/colors.dart';
 import 'package:firebase_auth_demo/utils/my_button.dart';
 import 'package:flutter/material.dart';
 
@@ -17,11 +18,11 @@ class DialogBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.yellow,
+      backgroundColor: Color.fromARGB(255, 219, 219, 219),
       content: Container(
-        height: 120,
+        height: 110,
+        width: 300,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TextField(
               controller: controller,
@@ -35,12 +36,14 @@ class DialogBox extends StatelessWidget {
               children: [
                 //save button
                 MyButton(text: 'Save', onPressed: onCancel),
-
                 SizedBox(
                   width: 8,
                 ),
                 //cancel button
-                MyButton(text: 'Cancel', onPressed: onSave)
+                MyButton(
+                  text: 'Cancel',
+                  onPressed: onSave,
+                )
               ],
             )
           ],

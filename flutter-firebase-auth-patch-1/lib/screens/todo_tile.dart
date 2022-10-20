@@ -30,7 +30,11 @@ class ToDoTile extends StatelessWidget {
               backgroundColor: Color.fromARGB(255, 176, 17, 17),
             ),
             SlidableAction(
-              onPressed: deleteFunction,
+              onPressed: ((context) {
+                SnackBar(
+                  content: const Text('Yay! A SnackBar!'),
+                );
+              }),
               backgroundColor: Colors.grey,
               foregroundColor: Colors.white,
               borderRadius: BorderRadius.only(

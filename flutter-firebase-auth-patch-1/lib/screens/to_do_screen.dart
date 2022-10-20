@@ -110,22 +110,33 @@ class _ToDoScreenState extends State<ToDoScreen> {
               ],
             ),
           ),
-          Expanded(
-            child: ListView.builder(
-              physics: const BouncingScrollPhysics(
-                parent: AlwaysScrollableScrollPhysics(),
-              ),
-              itemCount: db.toDoList.length,
-              itemBuilder: (context, index) {
-                return ToDoTile(
-                  taskName: db.toDoList[index][0],
-                  taskCompleted: db.toDoList[index][1],
-                  onChanged: (value) => chekBoxChanged(value, index),
-                  deleteFunction: (context) => deleteTask(index),
-                );
-              },
-            ),
-          ),
+          db.toDoList.isEmpty
+              ? Container(
+                  padding: EdgeInsets.only(top: 250),
+                  child: Text(
+                    "Let's get started",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                )
+              : Expanded(
+                  child: ListView.builder(
+                    physics: const BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics(),
+                    ),
+                    itemCount: db.toDoList.length,
+                    itemBuilder: (context, index) {
+                      return ToDoTile(
+                        taskName: db.toDoList[index][0],
+                        taskCompleted: db.toDoList[index][1],
+                        onChanged: (value) => chekBoxChanged(value, index),
+                        deleteFunction: (context) => deleteTask(index),
+                      );
+                    },
+                  ),
+                ),
         ],
       ),
     );
