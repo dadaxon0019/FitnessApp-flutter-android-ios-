@@ -3,8 +3,10 @@ import 'package:firebase_auth_demo/screens/login_email_password_screen.dart';
 import 'package:firebase_auth_demo/screens/login_screen.dart';
 import 'package:firebase_auth_demo/screens/signup_email_password_screen.dart';
 import 'package:firebase_auth_demo/auth/services/firebase_auth_methods.dart';
+import 'package:firebase_auth_demo/screens/to_do_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'auth/firebase_options.dart';
@@ -15,6 +17,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  //init the hive
+  await Hive.initFlutter();
+
+  //open a box
+
+  var box = await Hive.openBox('myBox');
   runApp(const MyApp());
 }
 

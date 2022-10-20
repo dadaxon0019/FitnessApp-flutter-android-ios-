@@ -92,7 +92,7 @@ class _StorageMusicState extends State<StorageMusic> {
               ),
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.only(top: 20, right: 15, left: 15),
+                padding: const EdgeInsets.only(top: 40, right: 15, left: 15),
                 child: Column(
                   children: <Widget>[
                     Row(

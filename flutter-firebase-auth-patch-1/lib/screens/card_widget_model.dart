@@ -1,3 +1,5 @@
+import 'package:firebase_auth_demo/screens/to_do_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/texts/app_medium_text.dart';
@@ -32,27 +34,33 @@ class CardWidget extends StatelessWidget {
                 fit: BoxFit.cover,
               )),
         ),
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-          width: double.infinity,
-          height: 160,
-          decoration: BoxDecoration(
-            color: Color.fromARGB(35, 62, 59, 59),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AppMeddiumText(text: 'Day 01 - Warm Up'),
-              SizedBox(
-                height: 5,
-              ),
-              AppSmallText(
-                text: '07:00 - 08:00 AM',
-                color: const Color(0xffD0FD3E),
-              )
-            ],
+        GestureDetector(
+          onTap: () {
+            Navigator.push(context,
+                CupertinoPageRoute(builder: (context) => ToDoScreen()));
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            width: double.infinity,
+            height: 160,
+            decoration: BoxDecoration(
+              color: Color.fromARGB(35, 62, 59, 59),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AppMeddiumText(text: 'Day 01 - Warm Up'),
+                SizedBox(
+                  height: 5,
+                ),
+                AppSmallText(
+                  text: '07:00 - 08:00 AM',
+                  color: const Color(0xffD0FD3E),
+                )
+              ],
+            ),
           ),
         )
       ],
