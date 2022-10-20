@@ -1,5 +1,7 @@
 import 'package:firebase_auth_demo/data/database.dart';
+import 'package:firebase_auth_demo/main.dart';
 import 'package:firebase_auth_demo/screens/todo_tile.dart';
+import 'package:firebase_auth_demo/utils/constants/colors.dart';
 import 'package:firebase_auth_demo/utils/dialog_box.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -72,28 +74,59 @@ class _ToDoScreenState extends State<ToDoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.yellow[200],
+      backgroundColor: mainColor,
       appBar: AppBar(
-        title: Text('To Do'),
-        elevation: 0,
+        title: Text('My Plans'),
+        backgroundColor: mainColor,
+        elevation: 2,
+        centerTitle: true,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: createNewTask,
-        child: Icon(Icons.add),
-      ),
-      body: ListView.builder(
-        physics: const BouncingScrollPhysics(
-          parent: AlwaysScrollableScrollPhysics(),
-        ),
-        itemCount: db.toDoList.length,
-        itemBuilder: (context, index) {
-          return ToDoTile(
-            taskName: db.toDoList[index][0],
-            taskCompleted: db.toDoList[index][1],
-            onChanged: (value) => chekBoxChanged(value, index),
-            deleteFunction: (context) => deleteTask(index),
-          );
-        },
+      body: Column(
+        children: <Widget>[
+          Container(
+            height: 70,
+            padding: EdgeInsets.only(left: 20, right: 15),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Add events',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600),
+                ),
+                Expanded(child: Container()),
+                IconButton(
+                  padding: EdgeInsets.zero,
+                  splashRadius: 20,
+                  iconSize: 35,
+                  onPressed: createNewTask,
+                  icon: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics(),
+              ),
+              itemCount: db.toDoList.length,
+              itemBuilder: (context, index) {
+                return ToDoTile(
+                  taskName: db.toDoList[index][0],
+                  taskCompleted: db.toDoList[index][1],
+                  onChanged: (value) => chekBoxChanged(value, index),
+                  deleteFunction: (context) => deleteTask(index),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

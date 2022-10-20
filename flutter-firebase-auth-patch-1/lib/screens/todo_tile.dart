@@ -1,3 +1,4 @@
+import 'package:firebase_auth_demo/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -17,7 +18,7 @@ class ToDoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25.0, right: 25, top: 25),
+      padding: const EdgeInsets.only(left: 20.0, right: 20, top: 20),
       child: Slidable(
         endActionPane: ActionPane(
           motion: StretchMotion(),
@@ -25,33 +26,54 @@ class ToDoTile extends StatelessWidget {
             SlidableAction(
               onPressed: deleteFunction,
               icon: Icons.delete,
-              backgroundColor: Colors.red.shade300,
-              borderRadius: BorderRadius.circular(12),
-            )
+              label: 'Delete',
+              backgroundColor: Color.fromARGB(255, 176, 17, 17),
+            ),
+            SlidableAction(
+              onPressed: deleteFunction,
+              backgroundColor: Colors.grey,
+              foregroundColor: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(15),
+                  bottomRight: Radius.circular(15)),
+              icon: Icons.create,
+              label: 'Change',
+            ),
           ],
         ),
         child: Container(
-          padding: EdgeInsets.all(24),
+          padding: EdgeInsets.only(left: 15),
           decoration: BoxDecoration(
-            color: Colors.yellow,
+            color: taskCompleted ? Colors.green : Colors.red,
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Row(
-            children: [
-              Checkbox(
-                value: taskCompleted,
-                onChanged: onChanged,
-                activeColor: Colors.black,
-              ),
-              Text(
-                taskName,
-                style: TextStyle(
-                  decoration: taskCompleted
-                      ? TextDecoration.lineThrough
-                      : TextDecoration.none,
+          child: Container(
+            padding: EdgeInsets.only(top: 8, bottom: 8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(5),
+                  bottomRight: Radius.circular(5)),
+              color: Colors.white,
+            ),
+            child: Row(
+              children: [
+                Checkbox(
+                  value: taskCompleted,
+                  onChanged: onChanged,
+                  activeColor: Colors.black,
                 ),
-              ),
-            ],
+                Text(
+                  taskName,
+                  style: TextStyle(
+                    fontSize: 19,
+                    fontWeight: FontWeight.w500,
+                    decoration: taskCompleted
+                        ? TextDecoration.lineThrough
+                        : TextDecoration.none,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
