@@ -14,12 +14,12 @@ class MyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.green,
+        backgroundColor: whiteColor,
       ),
       onPressed: onPressed,
       child: Text(
         text,
-        style: TextStyle(fontSize: 16),
+        style: TextStyle(fontSize: 16, color: Colors.indigo),
       ),
     );
   }

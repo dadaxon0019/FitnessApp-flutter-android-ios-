@@ -22,7 +22,9 @@ class DialogBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Color.fromARGB(255, 219, 219, 219),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(25.0))),
+      backgroundColor: whiteColor,
       content: Container(
         height: 200,
         width: 300,
@@ -32,7 +34,8 @@ class DialogBox extends StatelessWidget {
             TextField(
               controller: mainTitle,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
                 hintText: 'Add Title Tasks',
               ),
             ),
@@ -42,7 +45,8 @@ class DialogBox extends StatelessWidget {
             TextField(
               controller: descriptionTitle,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
                 hintText: 'Add Description Tasks',
               ),
             ),
@@ -53,19 +57,25 @@ class DialogBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 //save button
-                MyButton(
-                    text: 'Save',
-                    onPressed: () {
-                      if (mainTitle.text.isNotEmpty &&
-                          descriptionTitle.text.isNotEmpty) {
-                        return onSave();
-                      } else {}
-                    }),
-                SizedBox(
-                  width: 8,
+                TextButton(
+                  onPressed: onCancel,
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(color: Colors.indigo),
+                  ),
                 ),
-                //cancel button
-                MyButton(text: 'Cancel', onPressed: onCancel)
+                TextButton(
+                  onPressed: () {
+                    if (mainTitle.text.isNotEmpty &&
+                        descriptionTitle.text.isNotEmpty) {
+                      return onSave();
+                    } else {}
+                  },
+                  child: Text(
+                    'Save',
+                    style: TextStyle(color: Colors.indigo),
+                  ),
+                ),
               ],
             )
           ],

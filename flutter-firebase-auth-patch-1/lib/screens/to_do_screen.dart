@@ -6,6 +6,8 @@ import 'package:firebase_auth_demo/utils/dialog_box.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../utils/my_button.dart';
+
 class ToDoScreen extends StatefulWidget {
   @override
   State<ToDoScreen> createState() => _ToDoScreenState();
@@ -67,6 +69,14 @@ class _ToDoScreenState extends State<ToDoScreen> {
     );
   }
 
+  //clear all tasks
+  void clearAllTask() {
+    setState(() {
+      db.toDoList1.clear();
+    });
+    db.upDateBase();
+  }
+
   //delete task
   void deleteTask(int index) {
     setState(() {
@@ -108,6 +118,52 @@ class _ToDoScreenState extends State<ToDoScreen> {
                   onPressed: createNewTask,
                   icon: Icon(
                     Icons.add,
+                    color: Colors.white,
+                  ),
+                ),
+                IconButton(
+                  padding: EdgeInsets.zero,
+                  splashRadius: 20,
+                  iconSize: 35,
+                  onPressed: () {
+                    AlertDialog alert = AlertDialog(
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(25.0))),
+                      title: const Text('Are you sure ?'),
+                      content: const Text('All Task will be delete!'),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(
+                            context,
+                            'Cancel',
+                          ),
+                          child: const Text(
+                            'Cancel',
+                            style: TextStyle(color: Colors.indigo),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            clearAllTask();
+                            Navigator.pop(context, 'Cancel');
+                          },
+                          child: const Text(
+                            'OK',
+                            style: TextStyle(color: Colors.indigo),
+                          ),
+                        ),
+                      ],
+                    );
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return alert;
+                      },
+                    );
+                  },
+                  icon: Icon(
+                    Icons.clear_all,
                     color: Colors.white,
                   ),
                 ),
