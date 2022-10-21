@@ -4,17 +4,19 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ToDoTile extends StatelessWidget {
   final String taskName;
+  final String taskDescription;
   final bool taskCompleted;
   Function(bool?)? onChanged;
   Function(BuildContext)? deleteFunction;
 
-  ToDoTile(
-      {Key? key,
-      required this.taskName,
-      required this.taskCompleted,
-      required this.onChanged,
-      required this.deleteFunction})
-      : super(key: key);
+  ToDoTile({
+    Key? key,
+    required this.taskName,
+    required this.taskDescription,
+    required this.taskCompleted,
+    required this.onChanged,
+    required this.deleteFunction,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -66,16 +68,30 @@ class ToDoTile extends StatelessWidget {
                   onChanged: onChanged,
                   activeColor: Colors.black,
                 ),
-                Text(
-                  taskName,
-                  style: TextStyle(
-                    fontSize: 19,
-                    fontWeight: FontWeight.w500,
-                    decoration: taskCompleted
-                        ? TextDecoration.lineThrough
-                        : TextDecoration.none,
-                  ),
-                ),
+                Column(
+                  children: [
+                    Text(
+                      taskName,
+                      style: TextStyle(
+                        fontSize: 19,
+                        fontWeight: FontWeight.w500,
+                        decoration: taskCompleted
+                            ? TextDecoration.lineThrough
+                            : TextDecoration.none,
+                      ),
+                    ),
+                    Text(
+                      taskDescription,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        decoration: taskCompleted
+                            ? TextDecoration.lineThrough
+                            : TextDecoration.none,
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),

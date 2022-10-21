@@ -29,12 +29,13 @@ class _ToDoScreenState extends State<ToDoScreen> {
   }
 
   //text controller
-  final _controller = TextEditingController();
+  final _controller1 = TextEditingController();
+  final _controller2 = TextEditingController();
 
   //chekBoxChanged was tapped
   void chekBoxChanged(bool? value, int index) {
     setState(() {
-      db.toDoList[index][1] = !db.toDoList[index][1];
+      db.toDoList1[index][2] = !db.toDoList1[index][2];
     });
     db.upDateBase();
   }
@@ -42,8 +43,10 @@ class _ToDoScreenState extends State<ToDoScreen> {
 
   void saveNewTask() {
     setState(() {
-      db.toDoList.add([_controller.text, false]);
-      _controller.clear();
+      db.toDoList1.add([_controller1.text, _controller2.text, false]);
+
+      _controller1.clear();
+      _controller2.clear();
     });
     Navigator.of(context).pop();
     db.upDateBase();
@@ -55,9 +58,10 @@ class _ToDoScreenState extends State<ToDoScreen> {
       context: context,
       builder: (context) {
         return DialogBox(
-          controller: _controller,
-          onCancel: saveNewTask,
-          onSave: () => Navigator.of(context).pop(),
+          mainTitle: _controller1,
+          descriptionTitle: _controller2,
+          onSave: saveNewTask,
+          onCancel: () => Navigator.of(context).pop(),
         );
       },
     );
@@ -66,7 +70,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
   //delete task
   void deleteTask(int index) {
     setState(() {
-      db.toDoList.removeAt(index);
+      db.toDoList1.removeAt(index);
     });
     db.upDateBase();
   }
@@ -110,7 +114,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
               ],
             ),
           ),
-          db.toDoList.isEmpty
+          db.toDoList1.isEmpty
               ? Container(
                   padding: EdgeInsets.only(top: 250),
                   child: Text(
@@ -126,11 +130,12 @@ class _ToDoScreenState extends State<ToDoScreen> {
                     physics: const BouncingScrollPhysics(
                       parent: AlwaysScrollableScrollPhysics(),
                     ),
-                    itemCount: db.toDoList.length,
+                    itemCount: db.toDoList1.length,
                     itemBuilder: (context, index) {
                       return ToDoTile(
-                        taskName: db.toDoList[index][0],
-                        taskCompleted: db.toDoList[index][1],
+                        taskName: db.toDoList1[index][0],
+                        taskDescription: db.toDoList1[index][1],
+                        taskCompleted: db.toDoList1[index][2],
                         onChanged: (value) => chekBoxChanged(value, index),
                         deleteFunction: (context) => deleteTask(index),
                       );

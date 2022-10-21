@@ -1,26 +1,39 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
 class ToDoDataBase {
-  List toDoList = [];
+  List toDoList1 = [];
 
   // reference our box
   final _myBox = Hive.box('myBox');
 
-//run this method if this is the1st time ever openinig this app
+//run this method if this is the 1st time ever openinig this app
   void creatInitialData() {
-    toDoList = [
-      ['Make tutorial', false],
-      ['Do exercise', false],
+    toDoList1 = [
+      [
+        'Грудь',
+        'Жим лежа',
+        false,
+      ],
+      [
+        'Спина',
+        'Жим лежа',
+        false,
+      ],
+      [
+        'Ноги',
+        'Жим лежа',
+        false,
+      ],
     ];
   }
 
   //load Data from database
   void loadData() {
-    toDoList = _myBox.get('TODOLIST');
+    toDoList1 = _myBox.get('TODOLIST');
   }
 
   //updae the database
   void upDateBase() {
-    _myBox.put('TODOLIST', toDoList);
+    _myBox.put('TODOLIST', toDoList1);
   }
 }
