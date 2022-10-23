@@ -1,8 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:firebase_auth_demo/screens/settings.dart';
+import 'package:firebase_auth_demo/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/music_from_storage.dart';
+import '../screens/music_screen.dart';
 import '../widgets/Directory/main_directory_page.dart';
 import '../screens/home_screen.dart';
 import '../widgets/video_info/video_info.dart';
@@ -18,7 +18,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
   @override
   final items = [
     ImageIcon(
-      AssetImage("assets/Home.png"),
+      AssetImage("img/Home.png"),
     ),
     Icon(Icons.music_note_outlined),
     Icon(Icons.book),
@@ -52,7 +52,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
         HomeScreen(),
         StorageMusic(),
         DirectoryPage(),
-        Settings(),
+        ProfileScreen(),
       ]),
     );
   }

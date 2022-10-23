@@ -62,7 +62,7 @@ class _VideoInfoState extends State<VideoInfo> {
                     children: [
                       Container(
                         width: MediaQuery.of(context).size.width,
-                        height: 280,
+                        height: 350,
                         decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage('img/beginner_card.png'),
@@ -71,7 +71,7 @@ class _VideoInfoState extends State<VideoInfo> {
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width,
-                        height: 280,
+                        height: 350,
                         color: Color.fromARGB(67, 75, 71, 71),
                       ),
                       Container(
@@ -115,7 +115,9 @@ class _VideoInfoState extends State<VideoInfo> {
                               height: 5,
                             ),
                             AppMeddiumText(text: 'and Glutes Workout'),
-                            SizedBox(height: 50),
+                            SizedBox(
+                              height: 130,
+                            ),
                             Row(
                               children: [
                                 Container(

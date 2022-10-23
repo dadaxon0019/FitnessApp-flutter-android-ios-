@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth_demo/screens/card_widget_model.dart';
+import 'package:firebase_auth_demo/widgets/card_widget_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           image: DecorationImage(
-                              image: AssetImage('assets/avatar.jpg'),
+                              image: AssetImage('img/avatar.jpg'),
                               fit: BoxFit.cover),
                         ),
                       ),

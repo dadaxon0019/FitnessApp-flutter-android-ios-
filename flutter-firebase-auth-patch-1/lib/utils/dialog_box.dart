@@ -26,12 +26,17 @@ class DialogBox extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(25.0))),
       backgroundColor: whiteColor,
       content: Container(
-        height: 200,
         width: 300,
+        constraints: BoxConstraints(
+          maxHeight: 250,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextField(
+              keyboardType: TextInputType.multiline,
+              minLines: 1, //Normal textInputField will be displayed
+              maxLines: 3,
               controller: mainTitle,
               decoration: InputDecoration(
                 border:
@@ -43,6 +48,9 @@ class DialogBox extends StatelessWidget {
               height: 10,
             ),
             TextField(
+              keyboardType: TextInputType.multiline,
+              minLines: 1, //Normal textInputField will be displayed
+              maxLines: 3,
               controller: descriptionTitle,
               decoration: InputDecoration(
                 border:
