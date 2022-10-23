@@ -3,6 +3,7 @@ import 'package:firebase_auth_demo/auth/services/Login-SignUp/login_email_passwo
 import 'package:firebase_auth_demo/auth/services/Login-SignUp/login_screen.dart';
 import 'package:firebase_auth_demo/auth/services/Login-SignUp/signup_email_password_screen.dart';
 import 'package:firebase_auth_demo/auth/services/firebase_auth_methods.dart';
+import 'package:firebase_auth_demo/screens/map_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           textTheme: GoogleFonts.openSansTextTheme(),
         ),
-        home: AuthWrapper(),
+        home: MapScreen(),
         routes: {
           EmailPasswordSignup.routeName: (context) =>
               const EmailPasswordSignup(),
